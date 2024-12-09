@@ -25,9 +25,9 @@ public class CandidateServiceImpl implements CandidateService {
 
     @Override
     public CandidateResponseDTO createCandidate(CandidateRequestDTO candidate) {
-        var newCandidate = candidateRepositoryPort.findByEmail(candidate.getEmail());
+        var newCandidate = candidateRepositoryPort.findByEmail(candidate.email());
         if (newCandidate.isPresent()) {
-            throw new AlreadyExistsException("Candidate with email: " + candidate.getEmail() + " already exists");
+            throw new AlreadyExistsException("Candidate with email: " + candidate.email() + " already exists");
         }
         var candidateDomain = candidateMapper.toDomain(candidate);
         return candidateMapper.toResponse(candidateRepositoryPort.save(candidateDomain));

@@ -7,8 +7,8 @@ import jakarta.validation.constraints.Size;
 
 
 public record RegisterRequestDTO(@NotBlank
-                                 @Size(min = 3, max = 20)
-                                 String username,
+                                 @Size(min = 3, max = 50)
+                                 String name,
 
                                  @NotBlank
                                  @Email
